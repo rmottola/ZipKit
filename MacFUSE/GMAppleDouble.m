@@ -35,7 +35,42 @@
 //  Created by ted on 12/29/07.
 //
 #import "GMAppleDouble.h"
+
+#ifdef __APPLE__
 #import "libkern/OSByteOrder.h"
+#else
+
+#if defined(__linux__)
+#include <endian.h>
+#elif defined(__NetBSD__) || defined(__FreeBSD__) || defined(__OpenBSD__)
+#include <sys/endian.h>
+#endif
+
+typedef unsigned char      UInt8;
+typedef unsigned short     UInt16;
+typedef unsigned long      UInt32;
+typedef unsigned long long UInt64;
+
+#define OSSwapBigToHostInt16(x) be16toh(x)
+#define OSSwapHostToBigInt16(x) htobe16(x)
+
+#define OSSwapBigToHostInt32(x) be32toh(x)
+#define OSSwapHostToBigInt32(x) htobe32(x)
+
+#define OSSwapConstInt32(x) \
+    ((uint32_t)((((uint32_t)(x) & 0xff000000) >> 24) | \
+                (((uint32_t)(x) & 0x00ff0000) >>  8) | \
+                (((uint32_t)(x) & 0x0000ff00) <<  8) | \
+                (((uint32_t)(x) & 0x000000ff) << 24)))
+
+
+#if BYTE_ORDER == BIG_ENDIAN
+#define OSSwapHostToBigConstInt32(x) (x)
+#else
+#define OSSwapHostToBigConstInt32(x) OSSwapConstInt32(x)
+#endif
+
+#endif
 
 #define GM_APPLE_DOUBLE_HEADER_MAGIC   0x00051607
 #define GM_APPLE_DOUBLE_HEADER_VERSION 0x00020000
