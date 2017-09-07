@@ -53,7 +53,8 @@
 		NSMutableData *md = [subData mutableCopyWithZone:nil];
 		unsigned char *mdd = [md mutableBytes];
 		if ([md length] > 0) {
-			for (unsigned int i = 0; i < [md length]; i++)
+                  unsigned int i;
+			for (i = 0; i < [md length]; i++)
 				if (mdd[i] > 127)
 					mdd[i] = '?';
 			value = [[NSString alloc] initWithData:md encoding:NSUTF8StringEncoding];
