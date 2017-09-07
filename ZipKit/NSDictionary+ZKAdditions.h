@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+#include "ZKAdditionalDefs.h"
+
 @interface NSDictionary (ZKAdditions)
 
 + (NSDictionary *) zk_totalSizeAndCountDictionaryWithSize:(UInt64)size andItemCount:(UInt64)count;

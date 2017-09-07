@@ -7,6 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
+#include "ZKAdditionalDefs.h"
+
 @interface NSDate (ZKAdditions)
 
 + (NSDate *) zk_dateWithDosDate:(NSUInteger)dosDate;
