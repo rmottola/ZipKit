@@ -3,9 +3,12 @@
 //  ZipKit
 //
 //  Created by Karl Moskowski on 01/04/09.
+//  Updated by Riccardo Mottola 2017
 //
 
 #import <Foundation/Foundation.h>
+
+#import <ZKAdditionalDefs.h>
 
 @interface NSData (ZKAdditions)
 

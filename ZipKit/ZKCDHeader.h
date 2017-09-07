@@ -3,9 +3,12 @@
 //  ZipKit
 //
 //  Created by Karl Moskowski on 01/04/09.
+//  Updated by Riccardo Mottola 2017
 //
 
 #import <Foundation/Foundation.h>
+
+#import <ZKAdditionalDefs.h>
 
 @interface ZKCDHeader : NSObject
 
@@ -26,7 +29,7 @@
 @property (assign) UInt32 versionNeededToExtract;
 @property (assign) UInt32 generalPurposeBitFlag;
 @property (assign) UInt32 compressionMethod;
-@property (strong) NSDate *lastModDate;
+@property (retain) NSDate *lastModDate;
 @property (assign) UInt32 crc;
 @property (assign) UInt64 compressedSize;
 @property (assign) UInt64 uncompressedSize;
@@ -38,8 +41,8 @@
 @property (assign) UInt32 externalFileAttributes;
 @property (assign) UInt64 localHeaderOffset;
 @property (copy) NSString *filename;
-@property (strong) NSData *extraField;
+@property (retain) NSData *extraField;
 @property (copy) NSString *comment;
-@property (strong) NSMutableData *cachedData;
+@property (retain) NSMutableData *cachedData;
 
 @end
